@@ -1,0 +1,154 @@
+.section {
+  padding: var(--section-space) var(--gutter);
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin-bottom: 24px;
+  color: var(--gold-text);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------- Pull-quote ---------- */
+.quote {
+  max-width: 880px;
+  margin: 0 auto clamp(56px, 8vw, 96px);
+  text-align: center;
+}
+
+.quoteText {
+  margin: 0;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.25;
+}
+
+.quoteText p::before {
+  content: '\201C';
+}
+
+.quoteText p::after {
+  content: '\201D';
+}
+
+.quoteBy {
+  margin-top: 20px;
+  color: var(--text-soft);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.quoteBy::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background-color: var(--gold);
+}
+
+/* ---------- Portrait + text ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(48px, 7vw, 112px);
+  align-items: center;
+}
+
+.portrait {
+  width: calc(100% - 16px);
+  aspect-ratio: 4 / 5;
+}
+
+.portrait img {
+  object-position: center top;
+}
+
+.name {
+  font-size: clamp(36px, 4.4vw, 60px);
+}
+
+.tagline {
+  margin-top: 10px;
+  color: var(--gold-text);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bio {
+  max-width: 52ch;
+  margin-top: 28px;
+  font-size: 17px;
+}
+
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  margin: 28px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--sand);
+  list-style: none;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.credentials li:not(:last-child)::after {
+  content: '·';
+  margin: 0 10px;
+  color: var(--gold);
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--gold);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 30px);
+  text-decoration: none;
+}
+
+.phone svg {
+  font-size: 0.7em;
+}
+
+/* ---------- Mobile + tablet portrait: stack ---------- */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .credentials {
+    justify-content: center;
+  }
+}

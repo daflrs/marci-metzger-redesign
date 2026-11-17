@@ -1,0 +1,167 @@
+.section {
+  padding: var(--section-space) var(--gutter);
+  background-color: var(--sand);
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: clamp(48px, 6vw, 80px);
+  font-size: clamp(36px, 4.6vw, 60px);
+  text-align: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(48px, 7vw, 112px);
+}
+
+/* ---------- Sticky photo ---------- */
+.sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 48px);
+  align-self: start;
+  height: min(70vh, 640px);
+}
+
+.frame {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  margin-right: 16px;
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--gold);
+  transform: translate(16px, -16px);
+  pointer-events: none;
+}
+
+.stickyImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* ---------- Services list ---------- */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 0;
+}
+
+.item + .item {
+  border-top: 1px solid rgb(176 141 87 / 0.4);
+}
+
+.inlineImage {
+  display: none;
+}
+
+.number {
+  color: var(--text-soft);
+  font-family: var(--font-display);
+  font-size: 20px;
+  transition: color 0.4s var(--ease);
+}
+
+.current .number {
+  color: var(--gold-text);
+}
+
+.itemTitle {
+  margin-top: 10px;
+  font-size: clamp(30px, 3.2vw, 44px);
+}
+
+.itemText {
+  max-width: 46ch;
+  margin-top: 18px;
+  font-size: 17px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 1px solid var(--gold);
+  background: none;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.link svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.link:hover svg,
+.link:focus-visible svg {
+  transform: translateX(4px);
+}
+
+/* ---------- Tablet portrait + mobile: photo above each service ---------- */
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky {
+    display: none;
+  }
+
+  .item {
+    max-width: 640px;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  .item:first-child {
+    padding-top: 16px;
+  }
+
+  .inlineImage {
+    display: block;
+    width: calc(100% - 16px);
+    aspect-ratio: 3 / 2;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inlineImage {
+    width: calc(100% - 10px);
+  }
+}

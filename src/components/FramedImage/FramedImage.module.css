@@ -1,0 +1,28 @@
+.frame {
+  position: relative;
+  isolation: isolate;
+  --frame-offset: 16px;
+}
+
+/* The gold outline sits behind the photo, shifted up and to the right */
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--gold);
+  transform: translate(var(--frame-offset), calc(var(--frame-offset) * -1));
+  pointer-events: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .frame {
+    --frame-offset: 10px;
+  }
+}

@@ -1,0 +1,258 @@
+.section {
+  padding: var(--section-space) var(--gutter);
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: clamp(48px, 6vw, 80px);
+  font-size: clamp(36px, 4.6vw, 60px);
+  text-align: center;
+}
+
+/* ---------- Call | Visit ---------- */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(48px, 7vw, 112px);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 24px;
+  border-top: 1px solid var(--gold);
+}
+
+.columnTitle {
+  color: var(--gold-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.phone svg {
+  font-size: 0.6em;
+}
+
+.label {
+  margin-top: 40px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gold);
+}
+
+.dotOpen {
+  background-color: #4f7d5c;
+}
+
+.hours {
+  margin-top: 6px;
+  font-size: 17px;
+}
+
+.note {
+  max-width: 40ch;
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 15px;
+}
+
+.office {
+  margin-top: 18px;
+  font-size: clamp(22px, 2.2vw, 28px);
+}
+
+.address {
+  margin-top: 10px;
+  font-size: 17px;
+  font-style: normal;
+}
+
+/* Map, in the offset-outline frame */
+.mapFrame {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - 16px);
+  aspect-ratio: 4 / 3;
+  margin-top: 32px;
+}
+
+.mapFrame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--gold);
+  transform: translate(16px, -16px);
+  pointer-events: none;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--gold);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* ---------- Form ---------- */
+.formBlock {
+  max-width: 720px;
+  margin: clamp(72px, 9vw, 120px) auto 0;
+}
+
+.or {
+  color: var(--gold-text);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.formTitle {
+  margin: 10px 0 32px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field > span {
+  color: var(--gold-text);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #8f8573;
+  border-radius: 0;
+  background-color: var(--white);
+  color: var(--charcoal);
+  font: inherit;
+  font-size: 16px;
+}
+
+.field input {
+  height: 48px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 1px;
+}
+
+.submit {
+  height: 52px;
+  margin-top: 8px;
+  border: 0;
+  background-color: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background-color 0.3s var(--ease);
+}
+
+.submit:hover {
+  background-color: #2c3d54;
+}
+
+.thanks {
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 30px);
+  text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767px) {
+  .columns,
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .mapFrame {
+    width: calc(100% - 10px);
+  }
+
+  .mapFrame::before {
+    transform: translate(10px, -10px);
+  }
+}

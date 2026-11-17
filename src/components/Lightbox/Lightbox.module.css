@@ -1,0 +1,133 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px clamp(16px, 6vw, 96px);
+  background-color: rgb(20 28 40 / 0.94);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s var(--ease),
+    visibility 0s 0.3s;
+}
+
+.open .dialog {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s var(--ease);
+}
+
+.dialog :focus-visible {
+  outline-color: var(--white);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 1024px; /* the photos are 1024px wide, so never stretch them past that */
+  margin: 0;
+}
+
+.image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 160px);
+  object-fit: contain;
+  animation: fadeIn 0.35s ease;
+}
+
+.caption {
+  display: flex;
+  gap: 16px;
+  color: var(--white);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.caption span + span {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--white);
+  font-size: 26px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 50%;
+  background: none;
+  color: var(--white);
+  font-size: 22px;
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+.arrow:hover {
+  background-color: var(--white);
+  color: var(--navy);
+}
+
+.prev {
+  left: clamp(8px, 2vw, 24px);
+}
+
+.next {
+  right: clamp(8px, 2vw, 24px);
+}
+
+/* Mobile: arrows move below the photo, out of the way of swiping */
+@media (max-width: 767px) {
+  .dialog {
+    padding: 56px 12px 88px;
+  }
+
+  .arrow {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .prev {
+    left: calc(50% - 60px);
+  }
+
+  .next {
+    right: calc(50% - 60px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
