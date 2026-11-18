@@ -10,6 +10,8 @@ Here is the live link: **Live site:** [marci-metzger-green.vercel.app](https://m
 
 React, Vite, CSS Modules, react-icons, Vercel.
 
+This project was made with assistance of Claude.
+
 ## Highlights/Design Changes from the original
 
 - "Call Now" moved into a sticky header, so visitors can call from anywhere on the page
